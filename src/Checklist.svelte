@@ -1,6 +1,5 @@
 <script>
   import { db } from "./firebase.js";
-
   // let tasks = ["read"];
   // $: count = tasks.length;
   let newTask = "";
