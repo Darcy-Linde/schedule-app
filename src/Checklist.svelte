@@ -30,7 +30,7 @@
 <input bind:value={newTask} />
 <button on:click={() => addTask()}>Insert New Task</button>
 <ul>
-  {#each $list as l}
-    <TaskItem {...l} />
+  {#each $list as item}
+    <TaskItem {...item} />
   {/each}
 </ul>
