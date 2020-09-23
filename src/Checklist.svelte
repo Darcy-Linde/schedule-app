@@ -1,6 +1,7 @@
 <script>
   import { db } from "./firebase.js";
   import { list } from "./stores.js";
+  import TaskItem from "./TaskItem.svelte";
 
   $: count = $list.length;
   let newTask = "";
@@ -30,6 +31,6 @@
 <button on:click={() => addTask()}>Insert New Task</button>
 <ul>
   {#each $list as l}
-    <li>{l.task}</li>
+    <TaskItem {...l} />
   {/each}
 </ul>
