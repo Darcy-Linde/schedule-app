@@ -6,7 +6,7 @@
 
 <style>
   .is-complete {
-    text-decoration: line-through;
+    /* text-decoration: line-through; */
     color: green;
   }
   li {
@@ -17,6 +17,9 @@
   span {
     margin-right: auto;
   }
+  .delete {
+    width: 0.75em;
+  }
 </style>
 
 <li>
@@ -25,4 +28,7 @@
   {:else}
     <span>{task} | Created on {new Date(created).toLocaleDateString()}</span>
   {/if}
+  <button>
+    <img class="delete" src="/icons/trash-alt-regular.svg" alt="trashcan" />
+  </button>
 </li>
