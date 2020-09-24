@@ -18,14 +18,20 @@
   }
   li {
     display: flex;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
   }
   span {
     margin-right: auto;
   }
+  span:hover {
+    opacity: 0.3;
+  }
   .delete {
     width: 0.75em;
+  }
+  button:hover {
+    opacity: 0.3;
   }
 </style>
 
