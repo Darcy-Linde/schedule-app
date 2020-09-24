@@ -9,6 +9,11 @@
   function remove() {
     dispatch("remove", { created });
   }
+
+  function toggleStatus() {
+    const newStatus = !complete;
+    dispatch("toggle", { created, newStatus });
+  }
 </script>
 
 <style>
@@ -37,9 +42,9 @@
 
 <li>
   {#if complete}
-    <span class="is-complete">{task} | Created on {new Date(created).toLocaleDateString()}</span>
+    <span class="is-complete" on:click={toggleStatus}>{task} | Created on {new Date(created).toLocaleDateString()}</span>
   {:else}
-    <span>{task} | Created on {new Date(created).toLocaleDateString()}</span>
+    <span on:click={toggleStatus}>{task} | Created on {new Date(created).toLocaleDateString()}</span>
   {/if}
   <button on:click={remove}>
     <img class="delete" src="/icons/trash-alt-regular.svg" alt="trashcan" />

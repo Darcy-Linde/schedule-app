@@ -29,6 +29,11 @@
     const { created } = event.detail;
     db.ref("tasks/" + created).remove();
   }
+
+  function updateStatus(event) {
+    const { created, newStatus } = event.detail;
+    db.ref("tasks/" + created).update({ complete: newStatus });
+  }
 </script>
 
 <p>You have {count} {count === 1 ? 'item' : 'items'} on your list</p>
@@ -36,6 +41,6 @@
 <button on:click={() => addTask()}>Insert New Task</button>
 <ul>
   {#each $list as item}
-    <TaskItem {...item} on:remove={deleteTask} />
+    <TaskItem {...item} on:remove={deleteTask} on:toggle={updateStatus} />
   {/each}
 </ul>
