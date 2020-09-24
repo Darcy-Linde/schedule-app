@@ -24,6 +24,11 @@
     });
     newTask = "";
   }
+
+  function deleteTask(event) {
+    const { created } = event.detail;
+    db.ref("tasks/" + created).remove();
+  }
 </script>
 
 <p>You have {count} {count === 1 ? 'item' : 'items'} on your list</p>
@@ -31,6 +36,6 @@
 <button on:click={() => addTask()}>Insert New Task</button>
 <ul>
   {#each $list as item}
-    <TaskItem {...item} />
+    <TaskItem {...item} on:remove={deleteTask} />
   {/each}
 </ul>

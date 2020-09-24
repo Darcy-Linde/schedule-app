@@ -1,7 +1,14 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
+
   export let complete;
   export let created;
   export let task;
+
+  function remove() {
+    dispatch("remove", { created });
+  }
 </script>
 
 <style>
@@ -28,7 +35,7 @@
   {:else}
     <span>{task} | Created on {new Date(created).toLocaleDateString()}</span>
   {/if}
-  <button>
+  <button on:click={remove}>
     <img class="delete" src="/icons/trash-alt-regular.svg" alt="trashcan" />
   </button>
 </li>
