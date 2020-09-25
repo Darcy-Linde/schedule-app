@@ -18,16 +18,11 @@
 
 <style>
   .is-complete {
-    /* text-decoration: line-through; */
     color: green;
   }
-  li {
-    display: flex;
+  span {
     font-size: 1em;
     font-weight: bold;
-  }
-  span {
-    margin-right: auto;
   }
   span:hover {
     opacity: 0.3;
@@ -40,13 +35,15 @@
   }
 </style>
 
-<li>
-  {#if complete}
-    <span class="is-complete" on:click={toggleStatus}>{task} | Created on {new Date(created).toLocaleDateString()}</span>
-  {:else}
-    <span on:click={toggleStatus}>{task} | Created on {new Date(created).toLocaleDateString()}</span>
-  {/if}
-  <button on:click={remove}>
-    <img class="delete" src="/icons/trash-alt-regular.svg" alt="trashcan" />
-  </button>
-</li>
+<tr>
+  <td>
+    <button on:click={remove}>
+      <img class="delete" src="/icons/trash-alt-regular.svg" alt="trashcan" />
+    </button>
+  </td>
+  <td>
+    {#if complete}
+      <span class="is-complete" on:click={toggleStatus}>{task}</span>
+    {:else}<span on:click={toggleStatus}>{task}</span>{/if}
+  </td>
+</tr>

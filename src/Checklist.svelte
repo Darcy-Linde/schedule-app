@@ -36,11 +36,25 @@
   }
 </script>
 
-<p>You have {count} {count === 1 ? 'item' : 'items'} on your list</p>
-<input bind:value={newTask} />
-<button on:click={() => addTask()}>Insert New Task</button>
-<ul>
-  {#each $list as item}
-    <TaskItem {...item} on:remove={deleteTask} on:toggle={updateStatus} />
-  {/each}
-</ul>
+<style>
+  section {
+    margin-left: auto;
+    margin-right: auto;
+    width: 20em;
+  }
+
+  input {
+    width: 10em;
+  }
+</style>
+
+<section>
+  <p>You have {count} {count === 1 ? 'item' : 'items'} on your list</p>
+  <input bind:value={newTask} />
+  <button on:click={() => addTask()}>Add Task</button>
+  <table>
+    {#each $list as item}
+      <TaskItem {...item} on:remove={deleteTask} on:toggle={updateStatus} />
+    {/each}
+  </table>
+</section>
