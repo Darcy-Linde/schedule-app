@@ -16,13 +16,15 @@
   });
 
   function addTask() {
-    const time = Date.now();
-    db.ref("tasks/" + time).set({
-      task: newTask,
-      complete: false,
-      created: time,
-    });
-    newTask = "";
+    if (newTask.trim() !== "") {
+      const time = Date.now();
+      db.ref("tasks/" + time).set({
+        task: newTask.trim(),
+        complete: false,
+        created: time,
+      });
+      newTask = "";
+    }
   }
 
   function deleteTask(event) {
