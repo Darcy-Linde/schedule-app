@@ -36,6 +36,13 @@
     const { created, newStatus } = event.detail;
     db.ref("tasks/" + created).update({ complete: newStatus });
   }
+
+  function inputEnter(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("addTaskBtn").click();
+    }
+  }
 </script>
 
 <style>
@@ -52,8 +59,8 @@
 
 <section>
   <p>You have {count} {count === 1 ? 'item' : 'items'} on your list</p>
-  <input bind:value={newTask} />
-  <button on:click={() => addTask()}>Add Task</button>
+  <input bind:value={newTask} on:keypress={(e) => inputEnter(e)} />
+  <button id="addTaskBtn" on:click={() => addTask()}>Add Task</button>
   <table>
     {#each $list as item}
       <TaskItem {...item} on:remove={deleteTask} on:toggle={updateStatus} />
